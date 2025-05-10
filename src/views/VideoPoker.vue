@@ -106,8 +106,8 @@ onMounted(() => {
 <template>
   <div class="min-h-screen bg-green-800 text-white">
     <header class="bg-green-900 p-4 shadow-lg flex justify-between items-center">
-      <button 
-        @click="goToHome" 
+      <button
+        @click="goToHome"
         class="bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center"
       >
         <span class="mr-1">←</span> Back to Games
@@ -158,9 +158,6 @@ onMounted(() => {
         <div class="text-xl">
           <div>Credits: <span class="font-bold" :class="{'animate-credits': gameStore.gamePhase === 'showdown' && gameStore.winner !== 'High Card'}">{{ gameStore.credits }}</span></div>
           <div>Current Bet: <span class="font-bold">{{ gameStore.currentBet }}</span></div>
-        </div>
-        <div class="text-xl">
-          <div>Hand: <span class="font-bold">{{ handDescription }}</span></div>
         </div>
       </div>
 
