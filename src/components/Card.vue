@@ -7,6 +7,15 @@ defineProps({
   isHeld: {
     type: Boolean,
     default: false
+  },
+  faceUp: {
+    type: Boolean,
+    default: true 
+  },
+  size: {
+    type: String,
+    default: 'large', // small, medium, large
+    validator: (value) => ['small', 'medium', 'large'].includes(value)
   }
 })
 
@@ -27,26 +36,29 @@ const getSuitSymbol = (suit) => {
 
 <template>
   <div
-    class="card relative h-32 w-24 rounded-lg shadow-md flex flex-col justify-between p-2 bg-white border border-gray-200 transition-all duration-300 hover:scale-105"
+    class="card relative rounded-lg shadow-md flex flex-col justify-between p-2 bg-white border border-gray-200 transition-all duration-300 hover:scale-105"
     :class="{ 
-      'bg-blue-800 border-blue-900': !card.faceUp,
+      'bg-blue-800 border-blue-900': !faceUp,
       'card-held': isHeld,
-      'animate-card-deal': card.faceUp
+      'animate-card-deal': faceUp,
+      'h-32 w-24': size === 'large',
+      'h-24 w-18': size === 'medium',
+      'h-20 w-14': size === 'small'
     }"
   >
-    <template v-if="card.faceUp">
+    <template v-if="faceUp">
       <div class="flex justify-between items-center">
-        <div :class="getSuitColor(card.suit)" class="text-lg font-bold">{{ card.value }}</div>
-        <div :class="getSuitColor(card.suit)" class="text-lg">{{ getSuitSymbol(card.suit) }}</div>
+        <div :class="[getSuitColor(card.suit), size === 'small' ? 'text-sm' : 'text-lg', 'font-bold']">{{ card.value }}</div>
+        <div :class="[getSuitColor(card.suit), size === 'small' ? 'text-sm' : 'text-lg']">{{ getSuitSymbol(card.suit) }}</div>
       </div>
       
-      <div :class="getSuitColor(card.suit)" class="text-3xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      <div :class="[getSuitColor(card.suit), size === 'small' ? 'text-xl' : size === 'medium' ? 'text-2xl' : 'text-3xl', 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2']">
         {{ getSuitSymbol(card.suit) }}
       </div>
       
       <div class="flex justify-between items-center self-end">
-        <div :class="getSuitColor(card.suit)" class="text-lg">{{ getSuitSymbol(card.suit) }}</div>
-        <div :class="getSuitColor(card.suit)" class="text-lg font-bold">{{ card.value }}</div>
+        <div :class="[getSuitColor(card.suit), size === 'small' ? 'text-sm' : 'text-lg']">{{ getSuitSymbol(card.suit) }}</div>
+        <div :class="[getSuitColor(card.suit), size === 'small' ? 'text-sm' : 'text-lg', 'font-bold']">{{ card.value }}</div>
       </div>
       
       <!-- HOLD text overlay -->
@@ -61,7 +73,7 @@ const getSuitSymbol = (suit) => {
     </template>
     
     <div v-else class="card-back w-full h-full flex items-center justify-center">
-      <div class="text-white text-xl font-bold">🃏</div>
+      <div :class="[size === 'small' ? 'text-sm' : 'text-xl', 'text-white font-bold']">🃏</div>
     </div>
   </div>
 </template>
@@ -74,6 +86,14 @@ const getSuitSymbol = (suit) => {
 
 .card-held {
   transform: translateY(-20px);
+}
+
+.w-18 {
+  width: 4.5rem;
+}
+
+.w-14 {
+  width: 3.5rem;
 }
 
 @keyframes cardDeal {

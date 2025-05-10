@@ -12,11 +12,10 @@ const routes = [
     name: 'videoPoker',
     component: () => import('../views/VideoPoker.vue')
   },
-  // Will add Texas Hold'em later
   {
     path: '/texas-holdem',
     name: 'texasHoldem',
-    component: () => import('../views/ComingSoon.vue')
+    component: () => import('../views/TexasHoldem.vue')
   }
 ]
 
