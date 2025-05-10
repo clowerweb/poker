@@ -18,7 +18,7 @@ const navigateToGame = (route) => {
     <main class="container mx-auto p-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <!-- Video Poker Card -->
-        <div 
+        <div
           @click="navigateToGame('/video-poker')"
           class="bg-green-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
         >
@@ -40,7 +40,7 @@ const navigateToGame = (route) => {
         </div>
 
         <!-- Texas Hold'em Card -->
-        <div 
+        <div
           @click="navigateToGame('/texas-holdem')"
           class="bg-green-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
         >
@@ -53,9 +53,9 @@ const navigateToGame = (route) => {
             <h3 class="text-xl font-bold mb-2">Texas Hold'em</h3>
             <p class="text-gray-300 mb-4">The world's most popular poker variant. Community cards, betting rounds, and strategy.</p>
             <div class="flex justify-between items-center">
-              <span class="bg-green-700 text-sm px-3 py-1 rounded-full">Coming Soon</span>
-              <button class="bg-gray-600 text-white font-bold py-2 px-4 rounded opacity-75">
-                Coming Soon
+              <span class="bg-green-700 text-sm px-3 py-1 rounded-full">Single Player</span>
+              <button class="bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded transition-colors">
+                Play Now
               </button>
             </div>
           </div>
@@ -79,7 +79,9 @@ const navigateToGame = (route) => {
 
     <footer class="bg-black/30 p-4 mt-12">
       <div class="container mx-auto text-center text-gray-400">
-        <p>© 2025 Card Games Collection. All rights reserved.</p>
+        <p>
+          <a href="https://github.com/clowerweb/poker" target="_blank">Github</a>
+        </p>
       </div>
     </footer>
   </div>

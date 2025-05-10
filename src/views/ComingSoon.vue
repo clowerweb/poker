@@ -11,8 +11,8 @@ const goToHome = () => {
 <template>
   <div class="min-h-screen bg-blue-900 text-white flex flex-col">
     <header class="bg-blue-950 p-4 shadow-lg flex justify-between items-center">
-      <button 
-        @click="goToHome" 
+      <button
+        @click="goToHome"
         class="bg-blue-800 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center"
       >
         <span class="mr-1">←</span> Back to Games
@@ -33,8 +33,8 @@ const goToHome = () => {
         </div>
         <p class="text-xl mb-4">We're working hard to bring you the ultimate Texas Hold'em experience!</p>
         <p class="text-gray-300 mb-8">Our team is developing an exciting multiplayer Texas Hold'em game with realistic gameplay and stunning visuals. Check back soon!</p>
-        <button 
-          @click="goToHome" 
+        <button
+          @click="goToHome"
           class="bg-blue-700 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105"
         >
           Return to Homepage
@@ -44,7 +44,7 @@ const goToHome = () => {
 
     <footer class="bg-blue-950 p-4">
       <div class="container mx-auto text-center text-gray-400">
-        <p>© 2025 Card Games Collection. All rights reserved.</p>
+        <a href="https://github.com/clowerweb/poker" target="_blank">Github</a>
       </div>
     </footer>
   </div>
