@@ -78,35 +78,32 @@ export const useGameStore = defineStore('game', {
     },
     
     discardCards(indices) {
-      // Remove the cards at the given indices from the player's hand
+      // Replace cards at the given indices with new ones
+      // This keeps cards in their original positions
+      
+      // Make a copy of the current hand
       const newHand = [...this.playerHand]
-      const discarded = []
       
-      // Sort indices in descending order to avoid shifting issues
-      indices.sort((a, b) => b - a)
-      
+      // Replace each card at the discard indices
       for (const index of indices) {
-        if (index >= 0 && index < this.playerHand.length) {
-          discarded.push(newHand.splice(index, 1)[0])
+        if (index >= 0 && index < this.playerHand.length && this.deck.length > 0) {
+          const newCard = this.deck.pop()
+          newCard.faceUp = true
+          newHand[index] = newCard // Replace card at same position
         }
       }
       
       this.playerHand = newHand
-      
-      // Deal new cards to replace discarded ones
-      for (let i = 0; i < discarded.length; i++) {
-        if (this.deck.length > 0) {
-          const card = this.deck.pop()
-          card.faceUp = true
-          this.playerHand.push(card)
-        }
-      }
-      
       this.evaluateWinner()
     },
     
     stand() {
       this.evaluateWinner()
+    },
+    
+    addCredits(amount) {
+      // Add credits to the player's balance
+      this.credits += Number(amount)
     },
     
     evaluateWinner() {
